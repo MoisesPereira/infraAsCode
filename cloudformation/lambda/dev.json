@@ -1,0 +1,8 @@
+{
+    "Parameters": {
+        "RoleLambda": "ARN of IAM Role",
+        "NameLambda": "Name of Lambda Function",
+        "RunTimeLambda": "python3.7",
+        "EnvVar": "Variable Environment"
+    }
+}

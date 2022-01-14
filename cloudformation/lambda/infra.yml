@@ -1,0 +1,33 @@
+Parameters:
+  NameLambda:
+    Description: Name function Lambda
+    Type: String
+  EnvVar:
+    Description: Variable Environment
+    Type: String
+  RoleLambda:
+    Description: ARN of Role
+  RunTimeLambda:
+    Description: Languages to use in Lambda
+    AllowedValues:
+      - "python3.7"
+      - "nodejs10.x"
+      - "java11"
+
+Resources:
+  LambdaFunction:
+    Type: AWS::Lambda:Function
+    Properties:
+      FunctionName: !Ref NameLambda
+      Handler: lambda_function.handler
+      Role: !Ref RoleLambda
+      Runtime: !Ref RunTimeLambda
+      Environment:
+        Variables: 
+          EnvVar: !Ref EnvVar
+  CloudWatchLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub "/aws/lambda/${NameLambda}"
+      RetentionInDays: 7
+
