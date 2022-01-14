@@ -31,3 +31,4 @@ Resources:
       LogGroupName: !Sub "/aws/lambda/${NameLambda}"
       RetentionInDays: 7
 
+
